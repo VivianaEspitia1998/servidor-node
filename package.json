@@ -1,0 +1,14 @@
+{
+  "name": "servidor-node",
+  "version": "1.0.0",
+  "description": "servidor node para aplicacion de power apps",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Viviana Espitia",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
+}
