@@ -27,8 +27,6 @@ app.post('/imagen', upload.single('Incertidumbre.xlsx') , function(req, res) {
     pythonProcess.stdout.on('end', function() {
         let image1FileBuffer = fs.readFileSync('uploads/Histograma.png');
       //let image2FileBuffer = fs.readFileSync('uploads/Tornado.png');
-      //let image3FileBuffer = fs.readFileSync('uploads/Histograma2.png');
-      //let image4FileBuffer = fs.readFileSync('uploads/Tornado2.png');
 
         res.send({resizedImage: image1FileBuffer})
     })
