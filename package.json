@@ -4,11 +4,20 @@
   "description": "servidor node para aplicacion de power apps",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon app",
+    "start": "node app"
   },
   "author": "Viviana Espitia",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.18.1"
+    "express": "^4.18.1",
+    "mime": "^3.0.0",
+    "multer": "^1.4.5-lts.1",
+    "path": "^0.12.7",
+    "router": "^1.3.7",
+    "sharp": "^0.29.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19"
   }
 }
