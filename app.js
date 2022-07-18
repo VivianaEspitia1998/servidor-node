@@ -14,6 +14,14 @@ const storage = multer.diskStorage({
   
 const upload = multer({ storage: storage })
 
+const pythonProcess = spawn("python", ["Incertidumbre.py"])
+
+pythonProcess.stdout.on('end', function() {
+  let image1FileBuffer = fs.readFileSync('uploads/Histograma.png');
+  //let image2FileBuffer = fs.readFileSync('uploads/Tornado.png');
+  //let image3FileBuffer = fs.readFileSync('uploads/Histograma2.png');
+  //let image4FileBuffer = fs.readFileSync('uploads/Tornado2.png');
+
 const app = express()
 app.use(express.json())
 
@@ -21,15 +29,7 @@ app.get('/', function(req, res) {
     res.send('Hola Mundo desde Heroku')
 })
 
-app.post('/imagen', upload.single('Incertidumbre.xlsx') ,  function(req, res) {
-    const pythonProcess = spawn("python", ["Incertidumbre.py"])
-
-    pythonProcess.stdout.on('end', function() {
-      let image1FileBuffer = fs.readFileSync('uploads/Histograma.png');
-      let image2FileBuffer = fs.readFileSync('uploads/Tornado.png');
-      let image3FileBuffer = fs.readFileSync('uploads/Histograma2.png');
-      let image4FileBuffer = fs.readFileSync('uploads/Tornado2.png');
-
+app.post('/imagen', upload.single('Incertidumbre.xlsx') , function(req, res) {
       res.send({resizedImage: image1FileBuffer})
     })
 
