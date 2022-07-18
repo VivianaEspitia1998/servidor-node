@@ -10,27 +10,27 @@ const storage = multer.diskStorage({
     filename: function (req, file, cb) {
       cb(null, file.fieldname)
     }
-  })
+})
   
 const upload = multer({ storage: storage })
-
-const pythonProcess = spawn("python", ["Incertidumbre.py"])
-
-pythonProcess.stdout.on('end', function() {
-  let image1FileBuffer = fs.readFileSync('uploads/Histograma.png');
-  //let image2FileBuffer = fs.readFileSync('uploads/Tornado.png');
-  //let image3FileBuffer = fs.readFileSync('uploads/Histograma2.png');
-  //let image4FileBuffer = fs.readFileSync('uploads/Tornado2.png');
 
 const app = express()
 app.use(express.json())
 
 app.get('/', function(req, res) {
-    res.send('Hola Mundo desde Heroku')
+    res.send('Hola Mundo!!')
 })
 
 app.post('/imagen', upload.single('Incertidumbre.xlsx') , function(req, res) {
-      res.send({resizedImage: image1FileBuffer})
+    const pythonProcess = spawn("python", ["Incertidumbre.py"])
+
+    pythonProcess.stdout.on('end', function() {
+        let image1FileBuffer = fs.readFileSync('uploads/Histograma.png');
+      //let image2FileBuffer = fs.readFileSync('uploads/Tornado.png');
+      //let image3FileBuffer = fs.readFileSync('uploads/Histograma2.png');
+      //let image4FileBuffer = fs.readFileSync('uploads/Tornado2.png');
+
+        res.send({resizedImage: image1FileBuffer})
     })
 
     pythonProcess.stdin.end()
@@ -38,5 +38,5 @@ app.post('/imagen', upload.single('Incertidumbre.xlsx') , function(req, res) {
 
 const PORT = process.env.PORT || 3000
 app.listen(PORT, function() {
-  console.log('servidor escuchando en el puerto ', PORT)
+    console.log('servidor escuchando en el puerto ', PORT)
 })
