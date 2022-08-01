@@ -18,7 +18,7 @@ from PIL import Image
 iteraciones = 10000
 
 #LEER LOS DATOS DE LA PRIMERA HOJA
-file = "../Incertidumbre.xlsx"
+file = "uploads/Incertidumbre.xlsx"
 df = pd.read_excel(file)
 
 minimo = df['Minimo']
