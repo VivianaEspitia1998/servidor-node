@@ -34,8 +34,8 @@ app.post('/imagen1', upload.single('Incertidumbre.xlsx') , function(req, res) {
 app.post('/imagen2', upload.single('Incertidumbre.xlsx') , function(req, res) {
   const pythonProcess = spawn("python", ["Incertidumbre.py"])
   pythonProcess.stdout.on('end', function() {
-      let image1FileBuffer = fs.readFileSync('uploads/Tornado.png');
-      res.send({'$content-type': 'image/png', '$content': image1FileBuffer.toString('base64')})
+      let image2FileBuffer = fs.readFileSync('uploads/Tornado.png');
+      res.send({'$content-type': 'image/png', '$content': image2FileBuffer.toString('base64')})
   })
   pythonProcess.stdin.end()
 })
@@ -44,8 +44,8 @@ app.post('/imagen2', upload.single('Incertidumbre.xlsx') , function(req, res) {
 app.post('/imagen3', upload.single('Riesgo.xlsx') , function(req, res) {
   const pythonProcess = spawn("python", ["Riesgo.py"])
   pythonProcess.stdout.on('end', function() {
-      let image1FileBuffer = fs.readFileSync('uploads/Histograma2.png');
-      res.send({'$content-type': 'image/png', '$content': image1FileBuffer.toString('base64')})
+      let image3FileBuffer = fs.readFileSync('uploads/Histograma2.png');
+      res.send({'$content-type': 'image/png', '$content': image3FileBuffer.toString('base64')})
   })
   pythonProcess.stdin.end()
 })
@@ -54,8 +54,8 @@ app.post('/imagen3', upload.single('Riesgo.xlsx') , function(req, res) {
 app.post('/imagen4', upload.single('Riesgo.xlsx') , function(req, res) {
   const pythonProcess = spawn("python", ["Riesgo.py"])
   pythonProcess.stdout.on('end', function() {
-      let image1FileBuffer = fs.readFileSync('uploads/Tornado2.png');
-      res.send({'$content-type': 'image/png', '$content': image1FileBuffer.toString('base64')})
+      let image4FileBuffer = fs.readFileSync('uploads/Tornado2.png');
+      res.send({'$content-type': 'image/png', '$content': image4FileBuffer.toString('base64')})
   })
   pythonProcess.stdin.end()
 })
