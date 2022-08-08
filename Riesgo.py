@@ -145,6 +145,6 @@ for i in range(len(nvarianza)):
 plt.xlabel('% Contribución a la varianza', fontsize=15)
 plt.xlim(0, nvarianza[9]+10)
 plt.title('Costo Total', fontsize=25)
-plt.savefig("uploads/Tornado2.png")
+plt.savefig("uploads/Tornado2.png", bbox_inches='tight')
 
 sys.stdout.flush()
