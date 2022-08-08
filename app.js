@@ -34,7 +34,7 @@ app.post('/imagen1', upload.single('Incertidumbre.xlsx') , function(req, res) {
 app.post('/imagen2', upload.single('Incertidumbre.xlsx') , function(req, res) {
     const pythonProcess = spawn("python", ["Incertidumbre.py"])
     pythonProcess.stdout.on('end', function() {
-        let image2FileBuffer = fs.readFileSync('uploads/Histograma.png');
+        let image2FileBuffer = fs.readFileSync('uploads/Tornado.png');
         res.send({'$content-type': 'image/png', '$content': image2FileBuffer.toString('base64')})
     })
     pythonProcess.stdin.end()
