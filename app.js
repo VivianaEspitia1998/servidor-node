@@ -1,6 +1,5 @@
-const  express  =  require ( 'express' ) 
+const express  =  require ( 'express' ) 
 const multer = require ('multer')
-const spawn = require("child_process").spawn
 const fs = require ('fs')
 
 const storage = multer.diskStorage({
@@ -22,6 +21,7 @@ app.get('/', function(req, res) {
 
 
 app.post('/imagen1', upload.single('Incertidumbre.xlsx') , function(req, res) {
+    const spawn = require("child_process").spawn
     const pythonProcess = spawn("python", ["Incertidumbre.py"])
     pythonProcess.stdout.on('end', function() {
         let image1FileBuffer = fs.readFileSync('uploads/Histograma.png');
@@ -32,6 +32,7 @@ app.post('/imagen1', upload.single('Incertidumbre.xlsx') , function(req, res) {
 
 
 app.post('/imagen2', upload.single('Incertidumbre.xlsx') , function(req, res) {
+    const spawn = require("child_process").spawn
     const pythonProcess = spawn("python", ["Incertidumbre.py"])
     pythonProcess.stdout.on('end', function() {
         let image2FileBuffer = fs.readFileSync('uploads/Tornado.png');
@@ -42,22 +43,24 @@ app.post('/imagen2', upload.single('Incertidumbre.xlsx') , function(req, res) {
 
 
 app.post('/imagen3', upload.single('Riesgo.xlsx') , function(req, res) {
-  const pythonProcess = spawn("python", ["Riesgo.py"])
-  pythonProcess.stdout.on('end', function() {
-      let image3FileBuffer = fs.readFileSync('uploads/Histograma2.png');
-      res.send({'$content-type': 'image/png', '$content': image3FileBuffer.toString('base64')})
-  })
-  pythonProcess.stdin.end()
+    const spawn = require("child_process").spawn
+    const pythonProcess = spawn("python", ["Riesgo.py"])
+    pythonProcess.stdout.on('end', function() {
+        let image3FileBuffer = fs.readFileSync('uploads/Histograma2.png');
+        res.send({'$content-type': 'image/png', '$content': image3FileBuffer.toString('base64')})
+    })
+    pythonProcess.stdin.end()
 })
 
 
 app.post('/imagen4', upload.single('Riesgo.xlsx') , function(req, res) {
-  const pythonProcess = spawn("python", ["Riesgo.py"])
-  pythonProcess.stdout.on('end', function() {
-      let image4FileBuffer = fs.readFileSync('uploads/Tornado2.png');
-      res.send({'$content-type': 'image/png', '$content': image4FileBuffer.toString('base64')})
-  })
-  pythonProcess.stdin.end()
+    const spawn = require("child_process").spawn
+    const pythonProcess = spawn("python", ["Riesgo.py"])
+    pythonProcess.stdout.on('end', function() {
+        let image4FileBuffer = fs.readFileSync('uploads/Tornado2.png');
+        res.send({'$content-type': 'image/png', '$content': image4FileBuffer.toString('base64')})
+    })
+    pythonProcess.stdin.end()
 })
 
 const PORT = process.env.PORT || 3000
