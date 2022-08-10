@@ -7,14 +7,13 @@ import matplotlib.pyplot as plt
 import random
 import statistics
 import operator
-import sys
+
 from scipy import stats 
 from statistics import mode
 from matplotlib import style
 from numpy import var
 from random import betavariate
 from statsmodels.distributions.empirical_distribution import ECDF
-from PIL import Image
 
 #VARIABLE
 iteraciones = 10000
