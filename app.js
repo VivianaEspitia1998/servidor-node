@@ -27,7 +27,7 @@ app.post('/imagen1', upload.single('Incertidumbre.xlsx') , function(req, res) {
         let image1FileBuffer = fs.readFileSync('uploads/Histograma.png');
         res.send({'$content-type': 'image/png', '$content': image1FileBuffer.toString('base64')})
     })
-    pythonProcess.stdin.end()
+    pythonProcess.stdin.end()   
 })
 
 
